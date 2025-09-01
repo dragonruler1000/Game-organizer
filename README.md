@@ -14,21 +14,34 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/game-organizer.git
+git clone https://github.com/dragonruler1000/Game-organizer.git
 cd game-organizer
 ```
 
-2. (Optional) Create a virtual environment:
+2. Install [Poetry](https://python-poetry.org/) if you don’t already have it:
+
+* **Bash (Linux/macOS):**
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-3. Install dependencies (if any):
+* **PowerShell (Windows):**
+
+```powershell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+```
+
+3. Install project dependencies using Poetry:
 
 ```bash
-pip install -r requirements.txt
+poetry install
+```
+
+4. Activate the virtual environment (optional, but recommended):
+
+```bash
+poetry shell
 ```
 
 ## Usage
@@ -61,4 +74,6 @@ Contributions are welcome! Feel free to submit issues, suggest features, or subm
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
+
+See the [LICENSE](LICENSE) file for details.
