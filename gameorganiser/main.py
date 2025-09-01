@@ -1,7 +1,5 @@
 import json
 import os
-from math import trunc
-from random import choice
 
 
 def load_game_data(filename):
