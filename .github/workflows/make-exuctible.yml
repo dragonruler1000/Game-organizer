@@ -3,21 +3,16 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*'   # Trigger on version tags like v1.0.0
-  workflow_dispatch:
+      - 'v*'   # Runs only when you push a version tag like v1.0.0
+  workflow_dispatch: # Allow manual trigger too
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        include:
-          - os: windows-latest
-            ext: exe
-          - os: ubuntu-latest
-            ext: ""
-          - os: macos-latest
-            ext: ""
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,13 +29,13 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller --onefile main.py
+          pyinstaller --onefile your_script.py
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}
-          path: renamed/*
+          path: dist/*
 
   release:
     runs-on: ubuntu-latest
