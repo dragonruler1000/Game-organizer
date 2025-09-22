@@ -13,7 +13,9 @@
 
 option 1:
 ```bash
-pip install
+pip install gameorganiser
+```
+Option 2: run the 
 
 ## Usage
 
