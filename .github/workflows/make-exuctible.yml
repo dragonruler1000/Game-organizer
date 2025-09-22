@@ -51,4 +51,4 @@ jobs:
         with:
           files: release_builds/**/*
         env:
-          GITHUB_TOKEN: ${{ test.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
