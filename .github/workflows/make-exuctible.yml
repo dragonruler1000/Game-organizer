@@ -41,7 +41,7 @@ jobs:
           
       - name: Build executable [windows]
         if: matrix.os == 'windows-latest'
-        run: pyinstaller --onefile gameorganiser.main.py -n ${{matrix.os}}
+        run: pyinstaller --onefile gameorganiser/main.py -n ${{matrix.os}}
       - name: Build excecutable
         if: matrix.os != 'windows-latest'
         run: pyinstaller --onefile gameorganiser/main.py -n ${{matrix.os}}
