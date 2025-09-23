@@ -42,12 +42,15 @@ jobs:
       - name: Build executable
         run: pyinstaller --onefile main.py
 
-      - name: Rename executable
-        run: |
+      - name: Rename executable Windows
+        if: matrix.os == 'windows-latest'
+        run:
           mkdir renamed
-          if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            mv dist/main.exe renamed/gameorganiser-${{ matrix.name }}.exe
-          else
+          mv dist/main.exe renamed/gameorganiser-${{ matrix.name }}.exe
+      - name: Rename executable Linux & Mac
+        if: matrix.os != 'windows-latest'
+        run:
+            mkdir renamed
             mv dist/main renamed/gameorganiser-${{ matrix.name }}
             chmod +x renamed/gameorganiser-${{ matrix.name }}
           fi
