@@ -1,7 +1,6 @@
 import json
 import os
-from math import trunc
-from random import choice
+import csv
 
 
 def load_game_data(filename):
@@ -39,7 +38,8 @@ def main():
       print("\nMenu:")
       print("1. Add a new game")
       print("2. View all games")
-      print("3. Save and exit")
+      print("3. Export games to CSV")
+      print("4. Save and exit")
 
       choice = input("Enter your choice: ")
 
@@ -57,7 +57,17 @@ def main():
             else:
                 print("No games available.")
 
-      elif choice =="3":
+      elif choice == "3":
+          with open("games_export.csv", "w", newline='') as csvfile:
+              fieldnames = ["name", "type", "row", "col"]
+              writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+              writer.writeheader()
+              for game in data["games"]:
+                  writer.writerow(game)
+          print("Games exported to games_export.csv")
+
+      elif choice =="4":
         print("Attempting to save game data...")
         save_game_data(filename, data)
         print("Game data saved. Exiting...")

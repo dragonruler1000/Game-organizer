@@ -1,7 +1,7 @@
 [project]
 name = "gameorganiser"
-version = "0.1.0"
-description = ""
+version = "1.0.0"
+description = "A Python application to help organize board and card games by tracking game details and shelf locations."
 authors = [
     {name = "dragonruler1000",email = "github@me.minecraftchest2.us"}
 ]
