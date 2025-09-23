@@ -11,18 +11,21 @@
 
 ## Installation
 
-option 1:
+Option 1:
 ```bash
 pip install gameorganiser
 ```
-Option 2: run the 
-
+Option 2: download the executable from the [releases page](https://github.com/dragonruler1000/Game-organizer/releases/latest)
+Warning: there is a bug in the executable that causes it to not save data. Use the pip install method if you want to save data. I am working on fixing this issue.
 ## Usage
 
-1. Run the main script:
+1. Run the main script/executable:
 
 ```bash
 python main.py
+```
+```bash
+. ubuntu-latest
 ```
 
 2. Follow the prompts to:
