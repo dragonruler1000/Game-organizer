@@ -58,7 +58,7 @@ def main():
                 print("No games available.")
 
       elif choice == "3":
-          with open("games_export.csv", "w", newline='') as csvfile:
+          with open("gameorganiser/games_export.csv", "w", newline='') as csvfile:
               fieldnames = ["name", "type", "row", "col"]
               writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
