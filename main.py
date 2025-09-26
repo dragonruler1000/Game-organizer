@@ -3,20 +3,20 @@ import os
 import csv
 
 
-def load_game_data(filename):
+def load_game_data(game_file):
     script_directory = os.path.dirname(os.path.abspath(__file__))
-    full_path = os.path.join(script_directory, filename)
+    full_path = os.path.join(script_directory, game_file)
 
     if os.path.exists(full_path):
         with open(full_path, "r") as file:
             return json.load(file)
     else:
-        print(f"File {filename} not found. Starting a new save file")
+        print(f"File {game_file} not found. Starting a new save file")
         return {"games": [] }
 
-def save_game_data(filename, data):
+def save_game_data(game_file, data):
         script_directory = os.path.dirname(os.path.abspath(__file__))
-        full_path = os.path.join(script_directory, filename)
+        full_path = os.path.join(script_directory, game_file)
 
         with open(full_path, "w") as file:
             json.dump(data, file, indent=4)
@@ -31,8 +31,9 @@ def add_game(data, name, game_type, row, col):
         data["games"].append(game)
 
 def main():
-  filename = input("Enter the game file name (e.g., games.json): ")
-  data = load_game_data(filename)
+  filename = input("Enter the game file name (e.g., games): ")
+  game_file = filename + ".json"
+  data = load_game_data(game_file)
 
   while True:
       print("\nMenu:")
@@ -58,7 +59,8 @@ def main():
                 print("No games available.")
 
       elif choice == "3":
-          with open("gameorganiser/games_export.csv", "w", newline='') as csvfile:
+          csv_file = filename + ".csv"
+          with open(csv_file, "w", newline='') as csvfile:
               fieldnames = ["name", "type", "row", "col"]
               writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -69,7 +71,7 @@ def main():
 
       elif choice =="4":
         print("Attempting to save game data...")
-        save_game_data(filename, data)
+        save_game_data(game_file, data)
         print("Game data saved. Exiting...")
         input("Press Enter to exit...")
         break
